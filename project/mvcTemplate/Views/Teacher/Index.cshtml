@@ -1,9 +1,10 @@
 @{
-    ViewData["Title"] = "Etudiants";
+    ViewData["Title"] = "Enseignants";
 }
 
-@model IEnumerable<Student>
-  <h2>Liste des Étudiants</h2>
+@model IEnumerable<Teacher>
+
+ <h2>Liste des Étudiants</h2>
 
   <table class="table">
     <thead>
@@ -25,12 +26,8 @@
         <td>@student.Major</td>
         <td>
           <a asp-action="ShowDetails" asp-route-id="@student.Id">Détails</a>
-          <a asp-action="Delete" asp-route-id="@student.Id">Supprimer</a>
-          <a asp-action="Edit" asp-route-id="@student.Id">Edit</a>
         </td>
       </tr>
       }
-      <a asp-action="Add">Ajouter un Etudiant</a>
     </tbody>
-  </table></Student
->
+  </table></student>
