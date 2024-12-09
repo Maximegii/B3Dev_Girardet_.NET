@@ -1,0 +1,15 @@
+@{
+    ViewData["Title"] = "Etudiants";
+}
+
+@model IEnumerableStudent 
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Voici la page etudiants</p>
+    <ul>
+        <li>Nom:- @Model.Lastname</li>
+        <li>Prenom: @Model.Firstname</li>
+        <li>Age: @Model.Age</li>
+    </ul>
+</div>
