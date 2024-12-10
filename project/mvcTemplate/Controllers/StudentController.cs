@@ -1,28 +1,29 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using mvc.Data;
 using mvc.Models;
 
 namespace mvc.Controllers;
 
 public class StudentController : Controller
 {
+    private readonly ApplicationDbContext _context;
+
     private static List <Student> students = new()
     {
         new() { AdmissionDate = new DateTime(2024,8,1), Age = 20, Firstname = "Maxime", Lastname = "Girardet", GPA = 12, Major = Major.IT, Id =1},
-        new() { AdmissionDate = new DateTime(2024,8,1), Age = 19, Firstname = "Yohann", Lastname = "Mathieux", GPA = 12, Major = Major.IT, Id=2},
-        new() { AdmissionDate = new DateTime(2024,8,1), Age = 20, Firstname = "Arthur", Lastname = "Nova", GPA = 12, Major = Major.IT, Id=3},
-        new() { AdmissionDate = new DateTime(2024,8,1), Age = 21, Firstname = "Lester", Lastname = "Tageule", GPA = 12, Major = Major.IT, Id=4},
+        
     };
-    private readonly ILogger<StudentController> _logger;
-
-    public StudentController(ILogger<StudentController> logger)
+    public StudentController(ApplicationDbContext context)
     {
-        _logger = logger;
+        _context = context;
     }
+    private readonly ILogger<StudentController> _logger;
 
     public IActionResult Index() 
     {   
-        return View(students);
+        var student = _context.Students;
+        return View(student);
     }
     public IActionResult Add()
 {
@@ -31,18 +32,22 @@ public class StudentController : Controller
 
 [HttpPost]
 public IActionResult Add(Student student)
-{
-    if (ModelState.IsValid)
     {
-        student.Id = students.Max(e => e.Id) + 1;
-        students.Add(student);
-        return RedirectToAction(nameof(Index));
+        // Declencher le mecanisme de validation
+        if (!ModelState.IsValid)
+        {
+            return View();
+        }
+        // Ajouter le teacher
+        _context.Students.Add(student);
+
+        // Sauvegarder les changements
+        _context.SaveChanges();
+        return RedirectToAction("Index");
     }
-    return View(student);
-}
 public IActionResult Edit(int id)
 {
-   var student = students.FirstOrDefault(e => e.Id == id);
+    var student = _context.Students.Find(id);
     if (student == null)
     {
         return NotFound();
@@ -58,25 +63,20 @@ public IActionResult Edit(Student updatedStudent)
         return View(updatedStudent);
     }
 
-    var student = students.FirstOrDefault(e => e.Id == updatedStudent.Id);
+    var student = _context.Students.Find(updatedStudent.Id);
     if (student == null)
     {
         return NotFound();
     }
 
-    
-    student.Firstname = updatedStudent.Firstname;
-    student.Lastname = updatedStudent.Lastname;
-    student.Age = updatedStudent.Age;
-    student.AdmissionDate = updatedStudent.AdmissionDate;
-    student.GPA = updatedStudent.GPA;
-    student.Major = updatedStudent.Major;
+    _context.Students.Update(student);
+    _context.SaveChanges();
 
     return RedirectToAction(nameof(Index));
 }
 public IActionResult Delete(int id)
 {
-    var student = students.FirstOrDefault(e => e.Id == id);
+    var student = _context.Students.Find(id);
     if (student == null)
     {
         return NotFound();
@@ -87,22 +87,22 @@ public IActionResult Delete(int id)
 [HttpPost, ActionName("Delete")]
 public IActionResult DeleteConfirmed(int id)
 {
-    var student = students.FirstOrDefault(e => e.Id == id);
+    var student = _context.Students.Find(id);
     if (student != null)
     {
-        students.Remove(student);
+        _context.Students.Remove(student);
+        _context.SaveChanges();
     }
     return RedirectToAction(nameof(Index));
+    
 }
-public IActionResult ShowDetails(int id)
-{
-    var student = students.FirstOrDefault(e => e.Id == id);
-    if (student == null)
+ public IActionResult ShowDetails(int id)
     {
-        return NotFound();
+        var student = _context.Students.Find(id);
+       
+        return View(student);
     }
-    return View(student);
-}
+
 
     // [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     // public IActionResult Error()
