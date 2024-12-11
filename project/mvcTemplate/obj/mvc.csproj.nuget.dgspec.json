@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\maxime.girardet\\Documents\\Cours ISITECH\\B3\\.NET\\project\\mvcTemplate\\mvc.csproj": {}
+    "c:\\Users\\maxime.girardet\\Documents\\Cours ISITECH\\B3\\.NET\\project\\mvcTemplate\\mvc.csproj": {}
   },
   "projects": {
-    "C:\\Users\\maxime.girardet\\Documents\\Cours ISITECH\\B3\\.NET\\project\\mvcTemplate\\mvc.csproj": {
+    "c:\\Users\\maxime.girardet\\Documents\\Cours ISITECH\\B3\\.NET\\project\\mvcTemplate\\mvc.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\maxime.girardet\\Documents\\Cours ISITECH\\B3\\.NET\\project\\mvcTemplate\\mvc.csproj",
+        "projectUniqueName": "c:\\Users\\maxime.girardet\\Documents\\Cours ISITECH\\B3\\.NET\\project\\mvcTemplate\\mvc.csproj",
         "projectName": "mvc",
-        "projectPath": "C:\\Users\\maxime.girardet\\Documents\\Cours ISITECH\\B3\\.NET\\project\\mvcTemplate\\mvc.csproj",
+        "projectPath": "c:\\Users\\maxime.girardet\\Documents\\Cours ISITECH\\B3\\.NET\\project\\mvcTemplate\\mvc.csproj",
         "packagesPath": "C:\\Users\\maxime.girardet\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\maxime.girardet\\Documents\\Cours ISITECH\\B3\\.NET\\project\\mvcTemplate\\obj\\",
+        "outputPath": "c:\\Users\\maxime.girardet\\Documents\\Cours ISITECH\\B3\\.NET\\project\\mvcTemplate\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\maxime.girardet\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -46,6 +46,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.11, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[8.0.11, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",

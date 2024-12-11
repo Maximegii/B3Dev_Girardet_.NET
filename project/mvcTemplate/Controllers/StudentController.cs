@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using mvc.Data;
 using mvc.Models;
@@ -8,100 +9,104 @@ namespace mvc.Controllers;
 public class StudentController : Controller
 {
     private readonly ApplicationDbContext _context;
+    private readonly UserManager<Student> _userManager;
 
     private static List <Student> students = new()
     {
-        new() { AdmissionDate = new DateTime(2024,8,1), Age = 20, Firstname = "Maxime", Lastname = "Girardet", GPA = 12, Major = Major.IT, Id =1},
+        // new() { AdmissionDate = new DateTime(2024,8,1), Age = 20, Firstname = "Maxime", Lastname = "Girardet", GPA = 12, Major = Major.IT, Id =1},
         
     };
-    public StudentController(ApplicationDbContext context)
+    public StudentController(ApplicationDbContext context, UserManager<Student> userManager)
     {
         _context = context;
+        _userManager = userManager;
+        
     }
-    private readonly ILogger<StudentController> _logger;
+    
 
     public IActionResult Index() 
     {   
-        var student = _context.Students;
+        var student = _userManager;
         return View(student);
     }
     public IActionResult Add()
-{
-    return View();
+    {
+        return View();
+    }
 }
 
-[HttpPost]
-public IActionResult Add(Student student)
-    {
-        // Declencher le mecanisme de validation
-        if (!ModelState.IsValid)
-        {
-            return View();
-        }
-        // Ajouter le teacher
-        _context.Students.Add(student);
+// [HttpPost]
+// public IActionResult Add(Student student)
+//     {
+//         // Declencher le mecanisme de validation
+//         if (!ModelState.IsValid)
+//         {
+//             return View();
+//         }
+//         // Ajouter le teacher
+//         _context.Students.Add(student);
 
-        // Sauvegarder les changements
-        _context.SaveChanges();
-        return RedirectToAction("Index");
-    }
-public IActionResult Edit(int id)
-{
-    var student = _context.Students.Find(id);
-    if (student == null)
-    {
-        return NotFound();
-    }
+//         // Sauvegarder les changements
+//         _context.SaveChanges();
+//         return RedirectToAction("Index");
+//     }
+// public IActionResult Edit(int id)
+// {
+//     var student = _context.Students.Find(id);
+//     if (student == null)
+//     {
+//         return NotFound();
+//     }
     
-    return View(student);
-}
-[HttpPost]
-public IActionResult Edit(Student updatedStudent)
-{
-    if (!ModelState.IsValid)
-    {
-        return View(updatedStudent);
-    }
+//     return View(student);
+// }
+// [HttpPost]
+// public IActionResult Edit(Student updatedStudent)
+// {
+//     if (!ModelState.IsValid)
+//     {
+//         return View(updatedStudent);
+//     }
 
-    var student = _context.Students.Find(updatedStudent.Id);
-    if (student == null)
-    {
-        return NotFound();
-    }
+//     var student = _context.Students.Find(updatedStudent.Id);
+//     if (student == null)
+//     {
+//         return NotFound();
+//     }
 
-    _context.Students.Update(student);
-    _context.SaveChanges();
+//     _context.Students.Update(student);
+//     _context.SaveChanges();
 
-    return RedirectToAction(nameof(Index));
-}
-public IActionResult Delete(int id)
-{
-    var student = _context.Students.Find(id);
-    if (student == null)
-    {
-        return NotFound();
-    }
-    return View(student);
-}
+//     return RedirectToAction(nameof(Index));
+// }
+// public IActionResult Delete(int id)
+// {
+//     var student = _context.Students.Find(id);
+//     if (student == null)
+//     {
+//         return NotFound();
+//     }
+//     return View(student);
+// }
 
-[HttpPost, ActionName("Delete")]
-public IActionResult DeleteConfirmed(int id)
-{
-    var student = _context.Students.Find(id);
-    if (student != null)
-    {
-        _context.Students.Remove(student);
-        _context.SaveChanges();
-    }
-    return RedirectToAction(nameof(Index));
+// [HttpPost, ActionName("Delete")]
+// public IActionResult DeleteConfirmed(int id)
+// {
+//     var student = _context.Students.Find(id);
+//     if (student != null)
+//     {
+//         _context.Students.Remove(student);
+//         _context.SaveChanges();
+//     }
+//     return RedirectToAction(nameof(Index));
     
-}
- public IActionResult ShowDetails(int id)
-    {
-        var student = _context.Students.Find(id);
+// }
+//  public IActionResult ShowDetails(int id)
+//     {
+//         var student = _context.Students.Find(id);
        
-        return View(student);
-    }
+//         return View(student);
+//     }
 
 
     // [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -109,4 +114,4 @@ public IActionResult DeleteConfirmed(int id)
     // {
     //     return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     // }
-}
+// }

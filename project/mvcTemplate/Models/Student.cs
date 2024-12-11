@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Net.Http.Headers;
 
@@ -8,13 +9,11 @@ public enum Major
 {
     CS, IT, MATHS, OTHER
 }
-public class Student
+public class Student : IdentityUser
 {
     internal Major major;
 
-    // ecrire des variables d'instance 
-    [Required]
-    public int Id {get;set; }
+   
  [StringLength(20,MinimumLength = 2)]   
 public string Firstname {get;set; }
 [StringLength(20,MinimumLength = 2)]   
@@ -28,6 +27,11 @@ public Major Major {get;set;}
 public DateTime AdmissionDate {get;set; }
 
     internal static string? FirstOrDefault(Func<object, bool> value)
+    {
+        throw new NotImplementedException();
+    }
+
+    internal void Remove(Student student)
     {
         throw new NotImplementedException();
     }

@@ -63,4 +63,11 @@ Pour ajouter un message d'erreur personalisé : ![msgperso](image-3.png)
 
 Pour installer des dépendances tiers on utilise NuGet.org qui est le site qui référence le plus de dépendances 
 
-On va tout d'abord installer la dépendance Pomelo, qui permet de connecter une base de donnée MySQL, c'est aussi un ORM 
+On va tout d'abord installer la dépendance Pomelo, qui permet de connecter une base de donnée MySQL, c'est aussi un ORM.
+
+## Authentification
+
+Pour gérer un système d'authentification, on va utiliser 2 bibliothèques : "Microsoft.AspNetCore.Identity.EntityFrameworkCore" et "Microsoft.AspNetCore.Identity.UI" qui va gérer tout le système d'authentification 
+
+**ViewModel** 
+Le ViewModel sert à mettre en forme les données sorti d'un formulaire, et permettre la validation des données.
