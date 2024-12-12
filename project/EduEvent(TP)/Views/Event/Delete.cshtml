@@ -1,0 +1,37 @@
+@model Event
+
+@{
+    ViewData["Title"] = "Suppression Événement";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-header bg-danger text-white text-center">
+                    <h2>Supprimer l'Événement</h2>
+                </div>
+                <div class="card-body">
+                    <h4 class="text-center">Êtes-vous sûr de vouloir supprimer cet événement ?</h4>
+                    <dl class="row mt-3">
+                        <dt class="col-sm-4">Titre</dt>
+                        <dd class="col-sm-8">@Model.Title</dd>
+                        <dt class="col-sm-4">Description</dt>
+                        <dd class="col-sm-8">@Model.Description</dd>
+                        <dt class="col-sm-4">Lieu</dt>
+                        <dd class="col-sm-8">@Model.Location</dd>
+                        <dt class="col-sm-4">Date</dt>
+                        <dd class="col-sm-8">@Model.EventDate.ToString("dd/MM/yyyy HH:mm")</dd>
+                    </dl>
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                            <a asp-action="Index" class="btn btn-secondary">Annuler</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

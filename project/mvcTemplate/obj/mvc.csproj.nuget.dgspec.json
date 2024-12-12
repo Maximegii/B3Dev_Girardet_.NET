@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\maxime.girardet\\Documents\\Cours ISITECH\\B3\\.NET\\project\\mvcTemplate\\mvc.csproj": {}
+    "C:\\Users\\maxime.girardet\\Documents\\Cours ISITECH\\B3\\.NET\\project\\mvcTemplate\\mvc.csproj": {}
   },
   "projects": {
-    "c:\\Users\\maxime.girardet\\Documents\\Cours ISITECH\\B3\\.NET\\project\\mvcTemplate\\mvc.csproj": {
+    "C:\\Users\\maxime.girardet\\Documents\\Cours ISITECH\\B3\\.NET\\project\\mvcTemplate\\mvc.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\maxime.girardet\\Documents\\Cours ISITECH\\B3\\.NET\\project\\mvcTemplate\\mvc.csproj",
+        "projectUniqueName": "C:\\Users\\maxime.girardet\\Documents\\Cours ISITECH\\B3\\.NET\\project\\mvcTemplate\\mvc.csproj",
         "projectName": "mvc",
-        "projectPath": "c:\\Users\\maxime.girardet\\Documents\\Cours ISITECH\\B3\\.NET\\project\\mvcTemplate\\mvc.csproj",
+        "projectPath": "C:\\Users\\maxime.girardet\\Documents\\Cours ISITECH\\B3\\.NET\\project\\mvcTemplate\\mvc.csproj",
         "packagesPath": "C:\\Users\\maxime.girardet\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\maxime.girardet\\Documents\\Cours ISITECH\\B3\\.NET\\project\\mvcTemplate\\obj\\",
+        "outputPath": "C:\\Users\\maxime.girardet\\Documents\\Cours ISITECH\\B3\\.NET\\project\\mvcTemplate\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\maxime.girardet\\AppData\\Roaming\\NuGet\\NuGet.Config",

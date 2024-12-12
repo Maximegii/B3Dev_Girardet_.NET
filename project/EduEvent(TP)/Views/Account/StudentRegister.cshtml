@@ -5,10 +5,20 @@
         <div class="col-md-6">
             <div class="card shadow-lg">
                 <div class="card-header bg-primary text-white text-center">
-                    <h2>Connexion</h2>
+                    <h2>Nouveau Compte Étudiant</h2>
                 </div>
                 <div class="card-body">
-                    <form asp-action="Login">
+                    <form asp-action="StudentRegister">
+                        <div class="mb-3">
+                            <label asp-for="Lastname" class="form-label"></label>
+                            <input asp-for="Lastname" class="form-control" />
+                            <span asp-validation-for="Lastname" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Firstname" class="form-label"></label>
+                            <input asp-for="Firstname" class="form-control" />
+                            <span asp-validation-for="Firstname" class="text-danger"></span>
+                        </div>
                         <div class="mb-3">
                             <label asp-for="Email" class="form-label"></label>
                             <input asp-for="Email" class="form-control" />
@@ -19,8 +29,13 @@
                             <input asp-for="Password" type="password" class="form-control" />
                             <span asp-validation-for="Password" class="text-danger"></span>
                         </div>
+                        <div class="mb-3">
+                            <label asp-for="ConfirmedPassword" class="form-label"></label>
+                            <input asp-for="ConfirmedPassword" type="password" class="form-control" />
+                            <span asp-validation-for="ConfirmedPassword" class="text-danger"></span>
+                        </div>
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-primary">Connexion</button>
+                            <button type="submit" class="btn btn-primary">S'inscrire</button>
                         </div>
                     </form>
                 </div>

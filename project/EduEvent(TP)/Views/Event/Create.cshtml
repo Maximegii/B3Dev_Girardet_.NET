@@ -1,29 +1,52 @@
 @model Event
 
-<h2>Ajouter un Nouvel Evénement</h2>
+@{
+    ViewData["Title"] = "Création Événement";
+}
 
-<form asp-action="Add">
-  <div class="form-group">
-    <label asp-for="Title"></label>
-    <input asp-for="Title" class="form-control" />
-    <span asp-validation-for="Title" class="text-danger"></span>
-  </div>
-  <div class="form-group">
-    <label asp-for="Description"></label>
-    <input asp-for="Description" class="form-control" />
-    <span asp-validation-for="Description" class="text-danger"></span>
-  </div>
-  <div class="form-group">
-    <label asp-for="EventDate"></label>
-    <input asp-for="EventDate" class="form-control" />
-    <span asp-validation-for="EventDate" class="text-danger"></span>
-  </div>
-  <div class="form-group">
-    <label asp-for="MaxParticipants"></label>
-    <input asp-for="MaxParticipants" class="form-control" />
-    <span asp-validation-for="MaxParticipants" class="text-danger"></span>
-  </div>
-  <button type="submit" class="btn btn-primary">Ajouter l'Événement</button>
-</form>
-
-<a asp-action="Index">Retour à la Liste</a>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-success text-white text-center">
+                    <h2>Ajouter un Nouvel Événement</h2>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create">
+                        <div class="mb-3">
+                            <label asp-for="Title" class="form-label"></label>
+                            <input asp-for="Title" class="form-control" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label"></label>
+                            <textarea asp-for="Description" class="form-control"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Location" class="form-label"></label>
+                            <input asp-for="Location" class="form-control" />
+                            <span asp-validation-for="Location" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="EventDate" class="form-label"></label>
+                            <input asp-for="EventDate" type="datetime-local" class="form-control" />
+                            <span asp-validation-for="EventDate" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="MaxParticipants" class="form-label"></label>
+                            <input asp-for="MaxParticipants" class="form-control" />
+                            <span asp-validation-for="MaxParticipants" class="text-danger"></span>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success">Ajouter l'Événement</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-action="Index" class="btn btn-link">Retour à la Liste</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

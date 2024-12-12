@@ -1,8 +1,9 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Net.Http.Headers;
 
 namespace EduEvent.Models;
-public class Teacher
+public class Teacher : IdentityUser
 {
     internal Major major;
 

@@ -1,35 +1,22 @@
-@model AccountViewModel
-
-<h2>Nouveau compte</h2>
-
-<form asp-action="Register">
-  <div class="form-group">
-    <label asp-for="Lastname"></label>
-    <input asp-for="Lastname" class="form-control" />
-    <span asp-validation-for="Lastname" class="text-danger"></span>
-  </div>
-  <div class="form-group">
-    <label asp-for="Firstname"></label>
-    <input asp-for="Firstname" class="form-control" />
-    <span asp-validation-for="Firstname" class="text-danger"></span>
-  </div>
-  <div class="form-group">
-    <label asp-for="Email"></label>
-    <input asp-for="Email" class="form-control" />
-    <span asp-validation-for="Email" class="text-danger"></span>
-  </div>
-  <div class="form-group">
-    using EduEvent.Models;
-    <label asp-for="Password"></label>
-    <input asp-for="Password" class="form-control" />
-    <span asp-validation-for="Password" class="text-danger"></span>
-  </div>
-  <div class="form-group">
-    <label asp-for="ConfirmedPassword"></label>
-    <input asp-for="ConfirmedPassword" class="form-control" />
-    <span asp-validation-for="ConfirmedPassword" class="text-danger"></span>
-  </div>
-  <button type="submit" class="btn btn-primary">S'inscrire</button>
-</form>
-
-<a asp-action="Index">Retour</a>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3>Choisissez votre rôle</h3>
+                </div>
+                <div class="card-body text-center">
+                    <p class="lead">Veuillez sélectionner votre rôle pour vous inscrire.</p>
+                    <div class="d-flex justify-content-around mt-4">
+                        <a asp-action="TeacherRegister" class="btn btn-lg btn-outline-warning">
+                            <i class="bi bi-person-badge"></i> S'inscrire comme Professeur
+                        </a>
+                        <a asp-action="StudentRegister" class="btn btn-lg btn-outline-success">
+                            <i class="bi bi-person"></i> S'inscrire comme Élève
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
