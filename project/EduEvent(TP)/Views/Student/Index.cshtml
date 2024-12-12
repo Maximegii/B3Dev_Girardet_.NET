@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "Etudiants";
+}
+
+@model IEnumerable<Student>
+  <h2>Liste des Étudiants</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Âge</th>
+        <th>Spécialité</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var student in Model) {
+      <tr>
+        <td>@student.Id</td>
+    using EduEvent.Models;
+        <td>@student.Firstname</td>
+        <td>@student.Lastname</td>
+        <td>@student.Age</td>
+        <td>@student.Major</td>
+        <td>
+          <a asp-action="ShowDetails" asp-route-id="@student.Id">Détails</a>
+          <a asp-action="Delete" asp-route-id="@student.Id">Supprimer</a>
+          <a asp-action="Edit" asp-route-id="@student.Id">Edit</a>
+        </td>
+      </tr>
+      }
+      <a asp-action="Add">Ajouter un Etudiant</a>
+    </tbody>
+  </table></Student
+>
